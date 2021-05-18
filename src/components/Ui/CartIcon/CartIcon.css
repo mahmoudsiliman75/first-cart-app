@@ -1,0 +1,9 @@
+svg.add_to_cart {
+  color: #888;
+  cursor: pointer;
+}
+
+svg.add_to_cart.added {
+  color: #212121;
+  cursor: pointer;
+}
