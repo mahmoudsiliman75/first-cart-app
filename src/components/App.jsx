@@ -4,14 +4,15 @@ import Menu from './Menu/Menu';
 
 import NavBar from './Ui/NavBar/NavBar';
 import ShoppingCart from './ShoppingCart/ShoppingCart';
+import LoginForm from './LoginForm/LoginForm';
 
 class App extends Component { 
   state = {
     products: [
       {id: 1, name: 'Burger', price: 40, count: 0, atCart: false},
-      {id: 1, name: 'Pizza', price: 30, count: 0, atCart: false},
+      {id: 2, name: 'Pizza', price: 30, count: 0, atCart: false},
       {id: 3, name: 'Fries',  price: 20, count: 0, atCart: false},
-      {id: 2, name: 'Cola',  price: 10, count: 0, atCart: false},
+      {id: 4, name: 'Cola',  price: 10, count: 0, atCart: false},
     ],
   }
 
@@ -84,8 +85,9 @@ class App extends Component {
             <Menu 
               products={this.state.products}
               OnToggleStatus={this.toggleAtCartStatus}
-            />
-          )}/>
+              />
+            )}
+          />
 
           <Route path="/cart" render={ (props) => (
             <ShoppingCart
@@ -98,6 +100,8 @@ class App extends Component {
               /> 
             )}
           />
+
+          <Route path="/login" component={LoginForm}/>
         </main>
       </div>
     );

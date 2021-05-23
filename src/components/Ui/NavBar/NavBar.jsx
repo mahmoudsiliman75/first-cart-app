@@ -21,10 +21,13 @@ class NavBar extends Component {
               <li className="nav-item">
                 <NavLink className="nav-link" to="/cart">Shopping Cart</NavLink>
               </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/login">Login</NavLink>
+              </li>
             </ul>
           </div>
 
-          <span className="badge bg-primary"> <RiShoppingCartLine size="20px"/> {this.props.cartLength} </span>
+          <span className="badge bg-primary text-white"> <RiShoppingCartLine size="20px"/> {this.props.cartLength} </span>
         </div>
       </nav>
     )

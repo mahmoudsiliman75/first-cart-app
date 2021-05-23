@@ -8,7 +8,7 @@ import { FaTrashAlt } from "react-icons/fa";
 class Products extends Component {
 
   getClasses() {
-    return this.props.product.count === 0 ? "badge bg-warning p-2" : "badge bg-primary p-2"
+    return this.props.product.count === 0 ? "badge bg-warning text-white p-2 m-2" : "badge bg-primary text-white p-2 m-2"
   }
 
   render() {     
@@ -19,10 +19,10 @@ class Products extends Component {
         </div>
 
         <div className="col">
-          <button onClick={ () => this.props.onSubstract(this.props.product) } className="btn btn-danger me-2"> - </button>
+          <button onClick={ () => this.props.onSubstract(this.props.product) } className="btn btn-danger mx-1"> - </button>
           <span className={this.getClasses()}> {this.props.product.count} </span>
-          <button onClick={ () => this.props.onAdd(this.props.product) } className="btn btn-success ms-2"> + </button>
-          <button onClick={ () => this.props.onDelete(this.props.product) } className="btn btn-danger ms-2"> <FaTrashAlt /> </button>
+          <button onClick={ () => this.props.onAdd(this.props.product) } className="btn btn-success mx-1"> + </button>
+          <button onClick={ () => this.props.onDelete(this.props.product) } className="btn btn-danger mx-1"> <FaTrashAlt /> </button>
         </div>
       </div>
     )

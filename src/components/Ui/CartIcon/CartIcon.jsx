@@ -11,8 +11,6 @@ class CartIcon extends Component {
     };
 
     render() {
-    console.log(this.props.atCart);
-    console.log(this.props.productId);
     return(
       <MdAddShoppingCart size="25px" className={this.setClass()} onClick={ () => this.props.onToggleStatus(this.props.productId)}/>
     );
