@@ -1,14 +1,32 @@
-import React , {Component, createRef, Fragment} from 'react';
+import React , {Component, Fragment} from 'react';
 
 class LoginForm extends Component {
-  state={}
+  state={
+    userName: '',
+    password: '',
+  }
   
-  userName = createRef();
+  // userName = createRef();
   
+  handelValidation = () => {
+    console.log('Validate');
+  }
+
+  handelChange = (e) => {
+    let clonedState = {...this.state};
+
+    clonedState[e.currentTarget.name] = e.currentTarget.value;
+
+    this.setState(clonedState);
+  }
+
   handelSubmit = (e) => {
     e.preventDefault();
-    console.log(e, this.userName.current.value);
+    console.log('submit');
+    
+    this.handelValidation();
   }
+
   
   render() {
     return(
@@ -16,17 +34,15 @@ class LoginForm extends Component {
         <h1 className="my-5"> Login Form </h1>
         <form onSubmit={this.handelSubmit}>
           <div className="form-group">
-            <label htmlFor="user_name">Email address</label>
-            <input ref={this.userName} type="text" className="form-control" id="user_name" aria-describedby="emailHelp"/>
+            <label htmlFor="user_name">User Name</label>
+            <input onChange={this.handelChange} value={this.state.userName} name="userName" type="text" className="form-control" id="user_name" aria-describedby="emailHelp"/>
           </div>
+
           <div className="form-group">
-            <label htmlFor="exampleInputPassword1">Password</label>
-            <input type="password" className="form-control" id="exampleInputPassword1"/>
+            <label htmlFor="password">Password</label>
+            <input onChange={this.handelChange} value={this.state.password} name="password" type="password" className="form-control" id="password"/>
           </div>
-          <div className="form-group form-check">
-            <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-            <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
-          </div>
+
           <button type="submit" className="btn btn-primary">Submit</button>
         </form>
       </Fragment>
