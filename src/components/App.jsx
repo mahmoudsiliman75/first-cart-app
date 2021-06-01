@@ -3,18 +3,14 @@ import { Route } from 'react-router-dom';
 import axios from 'axios';
 
 import NavBar from './Ui/NavBar/NavBar';
-import ShoppingCart from './ShoppingCart/ShoppingCart';
-import LoginForm from './LoginForm/LoginForm';
 import Menu from './Menu/Menu';
+import ShoppingCart from './ShoppingCart/ShoppingCart';
+import AdminPanel from './AdminPanel/AdminPanel';
+import LoginForm from './LoginForm/LoginForm';
 
 class App extends Component { 
   state = {
-    products: [
-      // {id: 1, name: 'Burger', price: 40, count: 0, atCart: false},
-      // {id: 2, name: 'Pizza', price: 30, count: 0, atCart: false},
-      // {id: 3, name: 'Fries',  price: 20, count: 0, atCart: false},
-      // {id: 4, name: 'Cola',  price: 10, count: 0, atCart: false},
-    ],
+    products: [],
   }
 
   toggleAtCartStatus = (id) => {
@@ -107,6 +103,13 @@ class App extends Component {
               {...props}
               /> 
             )}
+          />
+
+          <Route path="/admin" render={ () => (
+            <AdminPanel
+              products={this.state.products}
+            />
+          )}
           />
 
           <Route path="/login" component={LoginForm}/>
