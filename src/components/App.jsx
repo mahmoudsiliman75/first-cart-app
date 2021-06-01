@@ -7,6 +7,7 @@ import Menu from './Menu/Menu';
 import ShoppingCart from './ShoppingCart/ShoppingCart';
 import AdminPanel from './AdminPanel/AdminPanel';
 import LoginForm from './LoginForm/LoginForm';
+import ProductForm from './ProductForm/ProductForm';
 
 class App extends Component { 
   state = {
@@ -32,6 +33,11 @@ class App extends Component {
     this.setState({
       atCart: selectedProduct
     });
+  }
+
+  handleRemoveItem = (product) => {
+    console.log('delete');
+    console.log(product);
   }
 
   handelReset = () => {
@@ -108,9 +114,12 @@ class App extends Component {
           <Route path="/admin" render={ () => (
             <AdminPanel
               products={this.state.products}
+              onRemove={this.state.handleRemoveItem}
             />
           )}
           />
+
+          <Route path="/productForm/:id" component={ProductForm}/>
 
           <Route path="/login" component={LoginForm}/>
         </main>

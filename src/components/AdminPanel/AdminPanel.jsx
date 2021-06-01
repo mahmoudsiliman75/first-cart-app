@@ -3,36 +3,41 @@ import {Link} from 'react-router-dom';
 
 import { GoTrashcan } from "react-icons/go";
 import { FiEdit } from "react-icons/fi";
+import { HiPlusSm } from "react-icons/hi";
 
 class AdminPanel extends Component {
   render() {
-
+    const onRemove = this.props.onRemove;
     const allProducts = this.props.products;
     const productsList = allProducts.map( (product) => {
       return (
-        <tr>
+        <tr key={product.id}>
           <td> {product.name} </td>
           <td> {product.price} </td>
           <td> 
-            <Link to="/" className="btn btn-lg text-warning"> 
+            <Link to={"/productForm/"+product.id}  className="btn btn-lg text-warning"> 
               <FiEdit/> 
             </Link> 
           </td>
           <td> 
-            <Link to="/" className="btn btn-lg text-danger"> 
+            <button onClick={() => onRemove(product)} className="btn btn-lg text-danger"> 
               <GoTrashcan/> 
-            </Link> 
+            </button> 
           </td>
         </tr>
       );
     });
 
-
     return(
       <Fragment>
-        <h1 className="my-5"> AdminPanel </h1>
+        <h1 className="mt-4"> AdminPanel </h1>
 
-        <table className="table">
+        <Link to="/productForm/new" className="btn btn-success mb-4">
+          <HiPlusSm/>
+          Add New Product
+        </Link>
+
+        <table className="table ">
           <thead>
             <tr>
               <th scope="col">Name</th>
