@@ -1,18 +1,19 @@
 import React, {Component} from 'react';
 import { Route } from 'react-router-dom';
-import Menu from './Menu/Menu';
+import axios from 'axios';
 
 import NavBar from './Ui/NavBar/NavBar';
 import ShoppingCart from './ShoppingCart/ShoppingCart';
 import LoginForm from './LoginForm/LoginForm';
+import Menu from './Menu/Menu';
 
 class App extends Component { 
   state = {
     products: [
-      {id: 1, name: 'Burger', price: 40, count: 0, atCart: false},
-      {id: 2, name: 'Pizza', price: 30, count: 0, atCart: false},
-      {id: 3, name: 'Fries',  price: 20, count: 0, atCart: false},
-      {id: 4, name: 'Cola',  price: 10, count: 0, atCart: false},
+      // {id: 1, name: 'Burger', price: 40, count: 0, atCart: false},
+      // {id: 2, name: 'Pizza', price: 30, count: 0, atCart: false},
+      // {id: 3, name: 'Fries',  price: 20, count: 0, atCart: false},
+      // {id: 4, name: 'Cola',  price: 10, count: 0, atCart: false},
     ],
   }
 
@@ -73,6 +74,13 @@ class App extends Component {
     this.setState({
       count: 0,
     }); 
+  }
+
+  componentDidMount() {
+    axios.get('http://localhost:3000/products/')
+    .then( data => this.setState({
+      products:  data.data
+    }))
   }
 
   render() {
